@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Parisienne&display=swap');
+
+:root{
+    --bg:#050505;
+    --surface:rgba(255,255,255,.04);
+    --surface-hover:rgba(255,255,255,.07);
+
+    --text:#fff;
+    --muted:rgba(255,255,255,.72);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+
+    height:70vh;
+    min-height:500px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    overflow:hidden;
+}
+
+.hero-backdrop{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.85)
+        ),
+        url("temp.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    padding:2rem;
+}
+
+.hero h1{
+    font-size:clamp(4rem,8vw,7rem);
+    font-weight:800;
+    letter-spacing:-0.03em;
+
+    margin-bottom:.75rem;
+}
+
+.hero p{
+    font-size:1.1rem;
+    color:rgba(255,255,255,.8);
+}
+
+/* SECTIONS */
+
+.feature-section{
+    position:relative;
+    overflow:hidden;
+    min-height:500px;
+}
+
+.section-background{
+    position:absolute;
+
+    top:-10%;
+    left:0;
+    right:0;
+    bottom:-10%;
+
+    background-size:cover;
+    background-position:center;
+
+    will-change:transform;
+}
+
+.getting-started .section-background{
+    background:
+        linear-gradient(
+            rgba(0,0,0,.5),
+            rgba(0,0,0,.88)
+        ),
+        url("temp2.jpg");
+}
+
+.getting-started .section-title h2{
+    font-family: "Parisienne", cursive;
+
+    font-size: clamp(3rem, 6vw, 5rem);
+}
+
+.support .section-background{
+    background:
+        linear-gradient(
+            rgba(0,0,0,.5),
+            rgba(0,0,0,.88)
+        ),
+        url("temp3.jpg");
+}
+
+.reference .section-background{
+    background:
+        linear-gradient(
+            rgba(0,0,0,.5),
+            rgba(0,0,0,.88)
+        ),
+        url("temp4.jpg");
+}
+
+.section-content{
+    position:relative;
+    z-index:2;
+
+    width:min(1700px,95vw);
+
+    margin:auto;
+
+    min-height:500px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    gap:2rem;
+
+    padding:4rem 0;
+}
+
+.section-title{
+    text-align:center;
+}
+
+.section-title h2{
+    font-size:clamp(2rem,5vw,3.5rem);
+
+    margin-bottom:.5rem;
+
+    font-weight:700;
+    letter-spacing:-0.03em;
+}
+
+.section-title p{
+    color:var(--muted);
+}
+
+/* CARDS */
+
+.card-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(300px,1fr));
+
+    gap:1.25rem;
+}
+
+.card{
+    min-height:180px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:2rem;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.05),
+            rgba(255,255,255,.02)
+        );
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.03)
+        );
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.35);
+}
+
+.card h3{
+    font-size:1.2rem;
+    margin-bottom:.5rem;
+}
+
+.card p{
+    color:var(--muted);
+    max-width:32ch;
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:2rem;
+    color:rgba(255,255,255,.55);
+}
+
+/* ANIMATIONS */
+
+.hero-content,
+.section-title,
+.card{
+    animation:fadeUp .5s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .card-grid{
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+
+    .hero{
+        min-height:400px;
+    }
+}
+
+@media(max-width:700px){
+
+    .hero{
+        min-height:320px;
+    }
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .card-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-content{
+        padding:3rem 1rem;
+    }
+}
